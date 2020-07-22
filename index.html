@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Vue</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model="newTodo" @keypress.13="addTodo">
+            <button type="button" @click="addTodo">Aggiungi</button>
+
+            <ul>
+                <li v-for="(todo, index) in todos" :class="todo.completato ? 'active' : ''">
+                    {{ todo.text }}
+                    <button type="button" @click="toggleCompletato(index)" v-if="todo.completato">V</button>
+                    <button type="button" @click="toggleCompletato(index)" v-else>X</button>
+
+                    <button type="button" @click="removeTodo(index, todo)">Elimina</button>
+                </li>
+            </ul>
+        </div>
+
+        <script src="script.js" charset="utf-8"></script>
+    </body>
+</html>
